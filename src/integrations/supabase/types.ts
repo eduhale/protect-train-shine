@@ -14,16 +14,215 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      instructor_settings: {
+        Row: {
+          credentials: string
+          display_name: string
+          institution_name: string
+          max_attempts: number
+          min_score: number
+          show_individual_results: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          credentials?: string
+          display_name?: string
+          institution_name?: string
+          max_attempts?: number
+          min_score?: number
+          show_individual_results?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Update: {
+          credentials?: string
+          display_name?: string
+          institution_name?: string
+          max_attempts?: number
+          min_score?: number
+          show_individual_results?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      normative_references: {
+        Row: {
+          code: string
+          consulted_at: string | null
+          created_at: string
+          edition: string
+          id: string
+          needs_validation: boolean
+          scope: string
+          title: string
+          url: string
+        }
+        Insert: {
+          code: string
+          consulted_at?: string | null
+          created_at?: string
+          edition?: string
+          id?: string
+          needs_validation?: boolean
+          scope?: string
+          title: string
+          url?: string
+        }
+        Update: {
+          code?: string
+          consulted_at?: string | null
+          created_at?: string
+          edition?: string
+          id?: string
+          needs_validation?: boolean
+          scope?: string
+          title?: string
+          url?: string
+        }
+        Relationships: []
+      }
+      participants: {
+        Row: {
+          attempts: number
+          attended: boolean
+          certificate_code: string | null
+          created_at: string
+          hours_completed: number
+          id: string
+          instructor_id: string
+          name: string
+          practical_done: boolean
+          score: number | null
+          session_id: string
+        }
+        Insert: {
+          attempts?: number
+          attended?: boolean
+          certificate_code?: string | null
+          created_at?: string
+          hours_completed?: number
+          id?: string
+          instructor_id?: string
+          name: string
+          practical_done?: boolean
+          score?: number | null
+          session_id: string
+        }
+        Update: {
+          attempts?: number
+          attended?: boolean
+          certificate_code?: string | null
+          created_at?: string
+          hours_completed?: number
+          id?: string
+          instructor_id?: string
+          name?: string
+          practical_done?: boolean
+          score?: number | null
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "participants_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "training_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      training_sessions: {
+        Row: {
+          audience: string
+          checklist: Json
+          class_name: string
+          created_at: string
+          current_slide: number
+          establishment_type: string
+          id: string
+          institution: string
+          instructor_id: string
+          notes: string
+          participants_count: number
+          planned_hours: number
+          presentation_id: string
+          session_date: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          audience?: string
+          checklist?: Json
+          class_name?: string
+          created_at?: string
+          current_slide?: number
+          establishment_type?: string
+          id?: string
+          institution?: string
+          instructor_id?: string
+          notes?: string
+          participants_count?: number
+          planned_hours?: number
+          presentation_id: string
+          session_date?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          audience?: string
+          checklist?: Json
+          class_name?: string
+          created_at?: string
+          current_slide?: number
+          establishment_type?: string
+          id?: string
+          institution?: string
+          instructor_id?: string
+          notes?: string
+          participants_count?: number
+          planned_hours?: number
+          presentation_id?: string
+          session_date?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "instructor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +349,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "instructor"],
+    },
   },
 } as const
