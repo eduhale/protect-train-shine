@@ -12,8 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedAvaliacoesRouteImport } from './routes/_authenticated/avaliacoes'
+import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedMateriaisRouteImport } from './routes/_authenticated/materiais'
+import { Route as AuthenticatedReferenciasRouteImport } from './routes/_authenticated/referencias'
+import { Route as AuthenticatedTurmasRouteImport } from './routes/_authenticated/turmas'
+import { Route as AuthenticatedApresentarPresentationIdRouteImport } from './routes/_authenticated/apresentar.$presentationId'
 import { Route as AuthenticatedAreaAreaIdRouteImport } from './routes/_authenticated/area.$areaId'
+import { Route as AuthenticatedTreinamentoPresentationIdRouteImport } from './routes/_authenticated/treinamento.$presentationId'
 import { Route as ApiPublicBootstrapRouteImport } from './routes/api/public/bootstrap'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,16 +37,55 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAvaliacoesRoute = AuthenticatedAvaliacoesRouteImport.update({
+  id: '/avaliacoes',
+  path: '/avaliacoes',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedConfiguracoesRoute =
+  AuthenticatedConfiguracoesRouteImport.update({
+    id: '/configuracoes',
+    path: '/configuracoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedMateriaisRoute = AuthenticatedMateriaisRouteImport.update({
+  id: '/materiais',
+  path: '/materiais',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReferenciasRoute =
+  AuthenticatedReferenciasRouteImport.update({
+    id: '/referencias',
+    path: '/referencias',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedTurmasRoute = AuthenticatedTurmasRouteImport.update({
+  id: '/turmas',
+  path: '/turmas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedApresentarPresentationIdRoute =
+  AuthenticatedApresentarPresentationIdRouteImport.update({
+    id: '/apresentar/$presentationId',
+    path: '/apresentar/$presentationId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAreaAreaIdRoute = AuthenticatedAreaAreaIdRouteImport.update({
   id: '/area/$areaId',
   path: '/area/$areaId',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTreinamentoPresentationIdRoute =
+  AuthenticatedTreinamentoPresentationIdRouteImport.update({
+    id: '/treinamento/$presentationId',
+    path: '/treinamento/$presentationId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const ApiPublicBootstrapRoute = ApiPublicBootstrapRouteImport.update({
   id: '/api/public/bootstrap',
   path: '/api/public/bootstrap',
@@ -49,15 +95,29 @@ const ApiPublicBootstrapRoute = ApiPublicBootstrapRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/avaliacoes': typeof AuthenticatedAvaliacoesRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/materiais': typeof AuthenticatedMateriaisRoute
+  '/referencias': typeof AuthenticatedReferenciasRoute
+  '/turmas': typeof AuthenticatedTurmasRoute
+  '/apresentar/$presentationId': typeof AuthenticatedApresentarPresentationIdRoute
   '/area/$areaId': typeof AuthenticatedAreaAreaIdRoute
+  '/treinamento/$presentationId': typeof AuthenticatedTreinamentoPresentationIdRoute
   '/api/public/bootstrap': typeof ApiPublicBootstrapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/avaliacoes': typeof AuthenticatedAvaliacoesRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/materiais': typeof AuthenticatedMateriaisRoute
+  '/referencias': typeof AuthenticatedReferenciasRoute
+  '/turmas': typeof AuthenticatedTurmasRoute
+  '/apresentar/$presentationId': typeof AuthenticatedApresentarPresentationIdRoute
   '/area/$areaId': typeof AuthenticatedAreaAreaIdRoute
+  '/treinamento/$presentationId': typeof AuthenticatedTreinamentoPresentationIdRoute
   '/api/public/bootstrap': typeof ApiPublicBootstrapRoute
 }
 export interface FileRoutesById {
@@ -65,23 +125,60 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/avaliacoes': typeof AuthenticatedAvaliacoesRoute
+  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/materiais': typeof AuthenticatedMateriaisRoute
+  '/_authenticated/referencias': typeof AuthenticatedReferenciasRoute
+  '/_authenticated/turmas': typeof AuthenticatedTurmasRoute
+  '/_authenticated/apresentar/$presentationId': typeof AuthenticatedApresentarPresentationIdRoute
   '/_authenticated/area/$areaId': typeof AuthenticatedAreaAreaIdRoute
+  '/_authenticated/treinamento/$presentationId': typeof AuthenticatedTreinamentoPresentationIdRoute
   '/api/public/bootstrap': typeof ApiPublicBootstrapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/dashboard' | '/area/$areaId' | '/api/public/bootstrap'
+    | '/'
+    | '/auth'
+    | '/avaliacoes'
+    | '/configuracoes'
+    | '/dashboard'
+    | '/materiais'
+    | '/referencias'
+    | '/turmas'
+    | '/apresentar/$presentationId'
+    | '/area/$areaId'
+    | '/treinamento/$presentationId'
+    | '/api/public/bootstrap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/area/$areaId' | '/api/public/bootstrap'
+  to:
+    | '/'
+    | '/auth'
+    | '/avaliacoes'
+    | '/configuracoes'
+    | '/dashboard'
+    | '/materiais'
+    | '/referencias'
+    | '/turmas'
+    | '/apresentar/$presentationId'
+    | '/area/$areaId'
+    | '/treinamento/$presentationId'
+    | '/api/public/bootstrap'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/avaliacoes'
+    | '/_authenticated/configuracoes'
     | '/_authenticated/dashboard'
+    | '/_authenticated/materiais'
+    | '/_authenticated/referencias'
+    | '/_authenticated/turmas'
+    | '/_authenticated/apresentar/$presentationId'
     | '/_authenticated/area/$areaId'
+    | '/_authenticated/treinamento/$presentationId'
     | '/api/public/bootstrap'
   fileRoutesById: FileRoutesById
 }
@@ -115,6 +212,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/avaliacoes': {
+      id: '/_authenticated/avaliacoes'
+      path: '/avaliacoes'
+      fullPath: '/avaliacoes'
+      preLoaderRoute: typeof AuthenticatedAvaliacoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/configuracoes': {
+      id: '/_authenticated/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -122,11 +233,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/materiais': {
+      id: '/_authenticated/materiais'
+      path: '/materiais'
+      fullPath: '/materiais'
+      preLoaderRoute: typeof AuthenticatedMateriaisRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/referencias': {
+      id: '/_authenticated/referencias'
+      path: '/referencias'
+      fullPath: '/referencias'
+      preLoaderRoute: typeof AuthenticatedReferenciasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/turmas': {
+      id: '/_authenticated/turmas'
+      path: '/turmas'
+      fullPath: '/turmas'
+      preLoaderRoute: typeof AuthenticatedTurmasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/apresentar/$presentationId': {
+      id: '/_authenticated/apresentar/$presentationId'
+      path: '/apresentar/$presentationId'
+      fullPath: '/apresentar/$presentationId'
+      preLoaderRoute: typeof AuthenticatedApresentarPresentationIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/area/$areaId': {
       id: '/_authenticated/area/$areaId'
       path: '/area/$areaId'
       fullPath: '/area/$areaId'
       preLoaderRoute: typeof AuthenticatedAreaAreaIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/treinamento/$presentationId': {
+      id: '/_authenticated/treinamento/$presentationId'
+      path: '/treinamento/$presentationId'
+      fullPath: '/treinamento/$presentationId'
+      preLoaderRoute: typeof AuthenticatedTreinamentoPresentationIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/api/public/bootstrap': {
@@ -140,13 +286,29 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAvaliacoesRoute: typeof AuthenticatedAvaliacoesRoute
+  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedMateriaisRoute: typeof AuthenticatedMateriaisRoute
+  AuthenticatedReferenciasRoute: typeof AuthenticatedReferenciasRoute
+  AuthenticatedTurmasRoute: typeof AuthenticatedTurmasRoute
+  AuthenticatedApresentarPresentationIdRoute: typeof AuthenticatedApresentarPresentationIdRoute
   AuthenticatedAreaAreaIdRoute: typeof AuthenticatedAreaAreaIdRoute
+  AuthenticatedTreinamentoPresentationIdRoute: typeof AuthenticatedTreinamentoPresentationIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAvaliacoesRoute: AuthenticatedAvaliacoesRoute,
+  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedMateriaisRoute: AuthenticatedMateriaisRoute,
+  AuthenticatedReferenciasRoute: AuthenticatedReferenciasRoute,
+  AuthenticatedTurmasRoute: AuthenticatedTurmasRoute,
+  AuthenticatedApresentarPresentationIdRoute:
+    AuthenticatedApresentarPresentationIdRoute,
   AuthenticatedAreaAreaIdRoute: AuthenticatedAreaAreaIdRoute,
+  AuthenticatedTreinamentoPresentationIdRoute:
+    AuthenticatedTreinamentoPresentationIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
