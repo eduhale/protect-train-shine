@@ -1,0 +1,1 @@
+export function canAttempt(attempts: number, maximum: number) { return attempts < maximum; }
