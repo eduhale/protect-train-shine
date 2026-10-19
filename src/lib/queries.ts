@@ -50,11 +50,13 @@ export const settingsQuery = queryOptions({
   queryKey: ["settings"],
   queryFn: async (): Promise<Settings> => {
     const { data: u } = await supabase.auth.getUser();
-    const { data } = await supabase.from("instructor_settings").select("*").maybeSingle();
+    if (!u.user) throw new Error("Sessão expirada. Entre novamente.");
+    const { data, error: readError } = await supabase.from("instructor_settings").select("*").eq("user_id", u.user.id).maybeSingle();
+    if (readError) throw readError;
     if (data) return data;
     const { data: created, error } = await supabase
       .from("instructor_settings")
-      .insert({ user_id: u.user!.id })
+      .insert({ user_id: u.user.id })
       .select()
       .single();
     if (error) throw error;
