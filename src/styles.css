@@ -128,7 +128,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0; }
 }
 
 /* Slides: fixed 1920x1080 canvas, scaled by ScaledSlide */
@@ -139,17 +139,20 @@
   --slide-body-lg: 40px; --slide-body: 34px; --slide-caption: 26px;
   --slide-kicker: 24px; --slide-chrome: 22px;
 }
-.slide-title-lg { font-family: var(--font-display); font-weight: 800; font-size: var(--slide-title-lg); line-height: 1; letter-spacing: -0.03em; }
-.slide-title { font-family: var(--font-display); font-weight: 800; font-size: var(--slide-title); line-height: 1.05; letter-spacing: -0.02em; }
+.slide-title-lg { font-family: var(--font-display); font-weight: 800; font-size: var(--slide-title-lg); line-height: 1.08; letter-spacing: 0; }
+.slide-title { font-family: var(--font-display); font-weight: 800; font-size: var(--slide-title); line-height: 1.1; letter-spacing: 0; }
 .slide-subtitle { font-size: var(--slide-subtitle); line-height: 1.15; }
 .slide-body-lg { font-size: var(--slide-body-lg); line-height: 1.25; }
 .slide-body { font-size: var(--slide-body); line-height: 1.3; }
 .slide-caption { font-size: var(--slide-caption); line-height: 1.3; }
-.slide-kicker { font-family: var(--font-display); font-weight: 700; font-size: var(--slide-kicker); letter-spacing: 0.14em; text-transform: uppercase; }
+.slide-kicker { font-family: var(--font-display); font-weight: 700; font-size: var(--slide-kicker); letter-spacing: 0; text-transform: uppercase; }
 .slide-chrome { font-size: var(--slide-chrome); line-height: 1.15; white-space: nowrap; }
 
 @keyframes slide-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .animate-slide-in { animation: slide-in 0.45s ease-out both; }
+.presentation-shell { height: 100dvh; display: flex; flex-direction: column; }
+.presentation-stage { flex: 1; min-height: 0; }
+@media (prefers-reduced-motion: reduce) { .animate-slide-in { animation: none; } }
 
 @media print {
   .no-print { display: none !important; }
