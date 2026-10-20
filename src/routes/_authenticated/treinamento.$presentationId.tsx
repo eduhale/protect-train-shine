@@ -26,7 +26,7 @@ function PreparePage() {
   const qc = useQueryClient();
   const [busy, setBusy] = useState(false);
   const [checklist, setChecklist] = useState<Record<string, boolean>>({});
-  const [form, setForm] = useState({ institution: "", class_name: "", audience: p.audience, establishment_type: establishmentTypes[0], session_date: new Date().toLocaleDateString("en-CA"), planned_hours: p.durationMin / 60, participants_count: 0, notes: "" });
+  const [form, setForm] = useState({ institution: "", class_name: "", audience: p.audience, establishment_type: establishmentTypes[0] ?? "Comércio", session_date: new Date().toLocaleDateString("en-CA"), planned_hours: p.durationMin / 60, participants_count: 0, notes: "" });
   async function save(start: boolean) {
     if (!form.class_name.trim() || !form.institution.trim()) { toast.error("Informe o nome da turma e a instituição."); return; }
     setBusy(true);

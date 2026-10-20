@@ -14,8 +14,8 @@ import { pageHead } from "@/lib/page-head";
 
 export const Route = createFileRoute("/_authenticated/apresentar/$presentationId")({
   validateSearch: (s: Record<string, unknown>) => ({
-    session: typeof s.session === "string" ? s.session : undefined,
-    slide: Number(s.slide ?? 0) || 0,
+    session: typeof s["session"] === "string" ? s["session"] : undefined,
+    slide: Number(s["slide"] ?? 0) || 0,
   }),
   loaderDeps: ({ search }) => ({ session: search.session }),
   loader: async ({ params, deps, context }) => {
