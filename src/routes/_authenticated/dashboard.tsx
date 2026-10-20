@@ -13,6 +13,8 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
       { name: "description", content: "Painel do instrutor com áreas de treinamento, turmas e avaliações." },
       { property: "og:title", content: "Painel do instrutor" },
       { property: "og:description", content: "Conhecimento que protege vidas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Dashboard,

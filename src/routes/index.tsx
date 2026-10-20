@@ -9,6 +9,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Conhecimento que protege vidas. Treinamentos presenciais de brigada, primeiros socorros e combate a incêndio." },
       { property: "og:title", content: "Centro de Treinamento — Segurança e Emergência" },
       { property: "og:description", content: "Conhecimento que protege vidas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   beforeLoad: async () => {

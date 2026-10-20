@@ -156,5 +156,9 @@
 
 @media print {
   .no-print { display: none !important; }
-  body { background: white; }
+  body { background: var(--card); }
+  body:has(.certificate-paper) > * { visibility: hidden; }
+  .certificate-dialog, .certificate-dialog * { visibility: visible; }
+  .certificate-dialog { position: absolute; inset: 0; width: 100%; max-width: none; transform: none; border: none; box-shadow: none; }
+  .certificate-dialog > button { display: none; }
 }
