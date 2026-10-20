@@ -148,7 +148,7 @@
 .slide-kicker { font-family: var(--font-display); font-weight: 700; font-size: var(--slide-kicker); letter-spacing: 0; text-transform: uppercase; }
 .slide-chrome { font-size: var(--slide-chrome); line-height: 1.15; white-space: nowrap; }
 
-@keyframes slide-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes slide-in { from { opacity: 0; } to { opacity: 1; } }
 .animate-slide-in { animation: slide-in 0.45s ease-out both; }
 .presentation-shell { height: 100dvh; display: flex; flex-direction: column; }
 .presentation-stage { flex: 1; min-height: 0; }
