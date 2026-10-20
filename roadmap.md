@@ -3,4 +3,4 @@
 - [x] Implementar turmas, participantes, avaliações e impressão de certificados.
 - [x] Implementar configurações, materiais e consulta das referências.
 - [x] Desativar criação pública de conta; verificar login público, proteção de páginas, compilação e 10 testes.
-- [ ] Verificar a aula completa com conta real: bloqueado porque Lovable Cloud não tem usuários cadastrados e o canal administrativo de criação não está disponível nesta conversa.
+- [x] Cadastrar o acesso inicial por canal administrativo seguro e verificar login, criação de turma, slides, perguntas, notas, pausa, persistência após atualização e encerramento no histórico com a conta real.
