@@ -15,6 +15,8 @@ export const Route = createFileRoute("/auth")({
       { name: "description", content: "Acesso do instrutor à plataforma de treinamentos de segurança e emergência." },
       { property: "og:title", content: "Entrar — Centro de Treinamento" },
       { property: "og:description", content: "Acesso restrito a instrutores." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AuthPage,
@@ -78,9 +80,9 @@ function AuthPage() {
             <Label htmlFor="pass">Senha</Label>
             <div className="relative">
               <Input id="pass" type={show ? "text" : "password"} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="pr-10" />
-              <button type="button" onClick={() => setShow((s) => !s)} aria-label={show ? "Ocultar senha" : "Mostrar senha"} className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground">
+              <Button type="button" variant="ghost" size="icon" onClick={() => setShow((s) => !s)} aria-label={show ? "Ocultar senha" : "Mostrar senha"} className="absolute inset-y-0 right-0 h-full w-10 text-muted-foreground">
                 {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              </button>
+              </Button>
             </div>
           </div>
           {error && <p role="alert" className="rounded-md bg-alert/10 px-3 py-2 text-sm text-alert">{error}</p>}

@@ -16,6 +16,8 @@ export const Route = createFileRoute("/_authenticated/area/$areaId")({
       { name: "description", content: loaderData?.area.description ?? "Área de treinamento" },
       { property: "og:title", content: loaderData?.area.title ?? "Área de treinamento" },
       { property: "og:description", content: loaderData?.area.description ?? "" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: AreaPage,
